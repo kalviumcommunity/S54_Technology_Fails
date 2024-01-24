@@ -4,11 +4,20 @@
 List of Stupidest Technology Fails
 
 ## Description
-My project would showcase a list of one of the most dumb & stupid tech fails which happend over some of the past years. My project would cover tech fails ranging from fails in gaming industry like Cyberpunk to the worst products of biggest technology giants like Apple.
+Welcome to the "Stupidest Technology Fails" project, where we explore and showcase some of the most absurd and amusing technology failures that have occurred over the past years. From epic fails in the gaming industry like Cyberpunk to the worst products from the biggest technology giants like Apple, this project is a humorous journey through the world of tech mishaps.
 
-### Features
-- Log-In Page
-- Interactive Navbar
-- Instructions and FAQs
-- Feedback
-- Suggestion Box
+## Features
+- **Log-In Page:** Secure access to exclusive content and features.
+- **Interactive Navbar:** Easy navigation through different categories of technology fails.
+- **Instructions and FAQs:** A comprehensive guide on how to use the platform and answers to frequently asked questions.
+- **Feedback:** Share your thoughts and reactions on the showcased tech fails.
+- **Suggestion Box:** Contribute your own ideas for inclusion in the project.
+
+## Local Setup Instructions
+To set up and run the project locally, follow these steps:
+
+1. **Clone the Repository:**
+```git clone https://github.com/your-username/stupid-tech-fails.git```
+2. **Navigate to Project Directory:** ```cd stupid-tech-fails```
+3. **Open the direcory in a Code Editor**
+4. **Install Dependencies:** ```npm install```
