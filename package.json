@@ -1,0 +1,12 @@
+{
+  "name": "s54_technology_fails",
+  "version": "1.0.0",
+  "description": "List of Stupidest Technology Fails",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Rikhil",
+  "license": "ISC"
+}
