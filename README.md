@@ -17,7 +17,7 @@ Welcome to the "Stupidest Technology Fails" project, where we explore and showca
 To set up and run the project locally, follow these steps:
 
 1. **Clone the Repository:**
-```git clone https://github.com/your-username/stupid-tech-fails.git```
+```git clone https://github.com/kalviumcommunity/S54_Technology_Fails.git```
 2. **Navigate to Project Directory:** ```cd stupid-tech-fails```
 3. **Open the direcory in a Code Editor**
 4. **Install Dependencies:** ```npm install```
