@@ -1,0 +1,15 @@
+meta {
+  name: CRUD Testing (DELETE)
+  type: http
+  seq: 4
+}
+
+delete {
+  url: http://localhost:8080/
+  body: json
+  auth: none
+}
+
+body:json {
+  {"userName":"abc"}
+}
