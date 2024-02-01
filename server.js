@@ -1,14 +1,35 @@
-const express = require("express")
-const app = express()
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
 
-app.get("/",(req,res)=>{
-    res.send("Root Path")
-})
+require("dotenv").config();
+let connectionStatus;
+main()
+  .then(() => {
+    connectionStatus = true;
+    console.log("Connection Successful!");
+  })
+  .catch((err) => {
+    connectionStatus = false
+    console.log(err);
+  });
 
-app.get("/ping",(req,res)=>{
-    res.send("RIKHIL")
-})
+async function main() {
+  await mongoose.connect(process.env.mongo_link);
+}
 
-app.listen(8080,()=>{
-    console.log("Listening on Port 8000")
-})
+app.get("/", (req, res) => {
+  if(connectionStatus){
+    res.send("Connected to MongoDB successfully!")
+  }else{
+    res.send("A problem occured while connecting to DataBase!")
+  }
+});
+
+app.get("/ping", (req, res) => {
+  res.send("RIKHIL");
+});
+
+app.listen(8080, () => {
+  console.log("Listening on Port 8000");
+});
