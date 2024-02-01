@@ -3,6 +3,9 @@
 ## IDEA
 List of Stupidest Technology Fails
 
+## Deployed Link
+https://technology-fails.onrender.com/
+
 ## Description
 Welcome to the "Stupidest Technology Fails" project, where we explore and showcase some of the most absurd and amusing technology failures that have occurred over the past years. From epic fails in the gaming industry like Cyberpunk to the worst products from the biggest technology giants like Apple, this project is a humorous journey through the world of tech mishaps.
 
