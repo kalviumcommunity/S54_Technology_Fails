@@ -1,0 +1,15 @@
+meta {
+  name: CRUD Testing (PUT)
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:8080/abc
+  body: json
+  auth: none
+}
+
+body:json {
+  {"userName":"abc","name":"random name - 2"}
+}
