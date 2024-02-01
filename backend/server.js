@@ -3,14 +3,12 @@ const app = express();
 const mongoose = require("mongoose");
 
 require("dotenv").config();
-let connectionStatus;
+
 main()
   .then(() => {
-    connectionStatus = true;
     console.log("Connection Successful!");
   })
   .catch((err) => {
-    connectionStatus = false
     console.log(err);
   });
 
@@ -19,11 +17,7 @@ async function main() {
 }
 
 app.get("/", (req, res) => {
-  if(connectionStatus){
-    res.send("Connected to MongoDB successfully!")
-  }else{
-    res.send("A problem occured while connecting to DataBase!")
-  }
+  res.send("HOME PAGE")
 });
 
 app.get("/ping", (req, res) => {
