@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+}
+/* body {
+  background-color: #1b345b;
+} */
+#test-1{
+  min-width: 100vw;
+  min-height: 100vh;
+  /* background-color: #1b345b; */
+  background: linear-gradient(-90deg, hsla(208, 33%, 11%, 1) 0%, hsla(211, 36%, 36%, 1) 100%);
+  z-index: -2;
+  position: fixed;
+  top: 0;
+}
+#test-2{
+  position: fixed;
+  top: 0;
+  z-index: -1;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-image: url("./assets/WhiteNoiseDithering.png");
+  opacity: 0.07;
+}
+#container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+/* .main-content{
+    margin-top: 10vmin;
+} */
+#navbar-main {
+  position: sticky;
+  top: 0;
+  padding: 3vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+.navbar {
+  background-color: #F6ECE2;
+  width: 80vw;
+  padding: 1vmin 5vmin;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /* opacity: 0.5; */
+  transition: all 0.2s;
+  /* box-shadow: 0px 0px 6px #F6ECE2; */
+}
+.options{
+  display: flex;
+  gap: 4vmin;
+}
+.option{
+  font-size: 2.3vmin;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.option:hover{
+  transform: scale(1.1)
+}
+.logo:hover{
+  cursor: pointer;
+  .tech{
+    color: rgb(250, 74, 74);
+  }
+  .fails{
+    color: #1b345b;
+  }
+
+}
+.logo-text{
+  font-size: 2vmax;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.tech{
+  color: #1b345b;
+}
+.fails{
+  color: rgb(250, 74, 74);
+}
+.home-parent{
+    color: white;
+    /* padding: 0vmin 10vmin; */
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20vmin;
+}
+.computer-img{
+    width: 30vmax;
+}
+.home-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vmin;
+}
+.button{
+  padding: 1vmin 1.5vmin;
+  border-radius: 30px;
+  background-color: rgb(250, 74, 74);
+  font-size: 1.4vmax;
+  cursor: pointer;
+  color: #F6ECE2;
+  transition: all 0.1s;
+}
+.button:hover{
+  box-shadow: 1px 1px 1px #F6ECE2;
+}
+
+@media (max-width:1000px) {
+  .computer-img{
+    width: 25vmax;
+}
+}
+@media (max-width:600px) {
+  .home-parent{
+    flex-direction: column;
+    justify-content: center;
+  }
+}
