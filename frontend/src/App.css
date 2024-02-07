@@ -41,10 +41,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+  width: 100%;
 }
 .navbar {
-  background-color: #F6ECE2;
+  background-color: aliceblue;
   width: 80vw;
   padding: 1vmin 5vmin;
   border-radius: 30px;
@@ -118,6 +118,39 @@
 }
 .button:hover{
   box-shadow: 1px 1px 1px #F6ECE2;
+}
+#listings-parent{
+  padding: 10vmin 10vmin;
+}
+.card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vmin;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.card-img>img:hover{
+    transform: scale(1.04);
+}
+.card-img>img{
+  border-radius: 10px;
+  width: 20vmax;
+  transition: all 0.2s;
+
+  /* height: 40vmin; */
+}
+.card-social{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 2vmin;
+}
+
+.likes, .comments{
+  display: flex;
+  align-items: center;
+  gap: 0.6vmin;
 }
 
 @media (max-width:1000px) {
