@@ -54,6 +54,7 @@
   width: 100%;
 }
 .navbar {
+  /* z-index: 100; */
   background-color: aliceblue;
   width: 80vw;
   padding: 1vmin 5vmin;
@@ -122,24 +123,37 @@
 /* Listings Page Designing */
 
 #listings-parent {
+  flex: 1;
   padding: 10vmin 10vmin;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 /* Card Designing */
 .card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* gap: 0.5vmin; */
-  cursor: pointer;
+  /* gap: 02vmin; */
+  /* cursor: pointer; */
   transition: all 0.2s;
 }
 .card-img > img:hover {
-  transform: scale(1.02);
+  /* transform: scale(1.02); */
+  box-shadow: 0px 0px 4px #1b345b;
+}
+.card-img{
+  padding-bottom: 1vmin;
+  cursor: pointer;
 }
 .card-img > img {
+
   border-radius: 10px;
   width: 20vmax;
+  height: 15vmax;
   transition: all 0.2s;
+  /* padding-bottom: 1vmin; */
 
   /* height: 40vmin; */
 }
@@ -162,6 +176,7 @@
   display: flex;
   align-items: center;
   gap: 0.6vmin;
+  cursor: pointer;
 }
 
 /* Media Queries for responsive */

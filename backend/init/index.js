@@ -12,7 +12,7 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(process.env.mongo_link);
+  await mongoose.connect(process.env.MONGO_LINK);
 }
 
 const usersData = [

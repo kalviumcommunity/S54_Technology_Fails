@@ -1,6 +1,7 @@
 import React from "react";
 import computerImg from "../assets/computer.png";
 import { Button } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <div style={{padding:"5vmin 0vmin",flex:"1",display:"flex",flexDirection:"column",alignItems:"center",gap:"2vmin"}}>
@@ -13,7 +14,7 @@ export default function Home() {
             <div style={{fontSize:"2vmax"}}>of all time!</div>
           </div>
         </div>
-          <Button colorScheme="red">Dive In!</Button>
+          <Link to="/listings"><Button colorScheme="red">Dive In!</Button></Link>
     </div>
   );
 }
