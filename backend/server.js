@@ -15,7 +15,7 @@ main()
   });
 
 async function main() {
-  await mongoose.connect(process.env.mongo_link);
+  await mongoose.connect(process.env.MONGO_LINK);
 }
 
 app.get("/", (req, res) => {
