@@ -126,12 +126,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1vmin;
+  /* gap: 0.5vmin; */
   cursor: pointer;
   transition: all 0.2s;
 }
 .card-img>img:hover{
-    transform: scale(1.04);
+    transform: scale(1.02);
 }
 .card-img>img{
   border-radius: 10px;
@@ -139,6 +139,9 @@
   transition: all 0.2s;
 
   /* height: 40vmin; */
+}
+.card-author{
+  align-self: flex-end;
 }
 .card-social{
   display: flex;

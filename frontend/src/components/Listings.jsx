@@ -16,6 +16,11 @@ export default function Listings() {
                 TWITTER / X ..?
               </Text>
             </div>
+            <div className="card-author">
+              <Text as="i" fontSize="0.8vmax">
+                ~Rikhil
+              </Text>
+            </div>
             <div className="card-tagline">
               <Text as="b" fontSize="1vmax">
                 How to destroy a Social Media App..?
