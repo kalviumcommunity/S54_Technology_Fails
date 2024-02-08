@@ -12,19 +12,20 @@ export default function Listings() {
               <img src={TwitterImg} alt="twitter bird caged" />
             </div>
             <div className="card-title">
-              <Text fontWeight="extrabold" fontSize="1.5vmax">
-                TWITTER / X ..?
+              <Text textAlign="center" fontWeight="extrabold" fontSize="1.2vmax">
+              Twitter / X ..?
               </Text>
             </div>
             <div className="card-author">
-              <Text as="i" fontSize="0.8vmax">
+              <Text as="i" fontSize="1vmax">
                 ~Rikhil
               </Text>
             </div>
             <div className="card-tagline">
-              <Text as="b" fontSize="1vmax">
+              {/* <Text as="b" fontSize="1.2vmax">
                 How to destroy a Social Media App..?
-              </Text>
+              </Text> */}
+              How to destroy a Social Media App..?
             </div>
             <div className="card-social">
               <div className="likes">

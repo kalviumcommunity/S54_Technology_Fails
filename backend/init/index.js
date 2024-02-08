@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const User = require("../models/user");
-require('dotenv').config({ path: '../.env' });
+const Post = require("../models/post");
+require("dotenv").config({ path: "../.env" });
 
 // console.log(process.env)
 
@@ -9,7 +10,6 @@ main()
     console.log("Connection Successful!");
   })
   .catch((err) => console.log(err));
-  
 
 async function main() {
   await mongoose.connect(process.env.mongo_link);
@@ -98,10 +98,59 @@ const usersData = [
   }),
 ];
 
-User.insertMany(usersData)
-  .then((result) => {
-    console.log("Data inserted successfully:", result);
-  })
-  .catch((error) => {
-    console.error("Error inserting data:", error);
-  });
+const postData = [
+  new Post({
+    title: "Twiiter / X ..?",
+    tagline: "How to destroy a Social Media App..?",
+    image: "https://th.bing.com/th/id/OIG4.SpUTu0nJ5H7MUV6GYBoW?pid=ImgGn",
+    user: "Rikhil",
+  }),
+  new Post({
+    title: "Apple Newton: Visionary but flawed",
+    tagline: "An overpriced MessagePad",
+    image: "https://static0.xdaimages.com/wordpress/wp-content/uploads/2023/08/apple-newton-messagepad-pda.jpg",
+    user: "Rikhil",
+  }),
+  new Post({
+    title: "BlackBerry Storm",
+    tagline: "A gimmicky touchscreen",
+    image: "https://static0.xdaimages.com/wordpress/wp-content/uploads/2023/08/blackberry-storm.jpg",
+    user: "Rikhil",
+  }),
+  new Post({
+    title: "Google Glass",
+    tagline: "Too soon to be good",
+    image: "https://th.bing.com/th/id/OIG4.SpUTu0nJ5H7MUV6GYBoW?pid=ImgGn",
+    user: "Rikhil",
+  }),
+  new Post({
+    title: "Microsoft Band",
+    tagline: "Software Company trying Hardware...nice!",
+    image: "https://duet-cdn.vox-cdn.com/thumbor/0x0:2040x1360/828x552/filters:focal(1020x680:1021x681):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/2447948/microsoft-band-012-2040.0.jpg",
+    user: "Rikhil",
+  }),
+  new Post({
+    title: "Samsung Bixby",
+    tagline: "*Not* so intelligent Voice Assistant",
+    image: "https://duet-cdn.vox-cdn.com/thumbor/0x0:2040x1360/828x552/filters:focal(1020x680:1021x681):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/10457665/akrales_180319_2395_0032.jpg",
+    user: "Rikhil",
+  }),
+];
+
+// User.insertMany(usersData)
+//   .then((result) => {
+//     console.log("Data inserted successfully:", result);
+//   })
+//   .catch((error) => {
+//     console.error("Error inserting data:", error);
+//   });
+
+// Post.insertMany(postData)
+//   .then((result) => {
+//     console.log("Data inserted successfully:", result);
+//   })
+//   .catch((error) => {
+//     console.error("Error inserting data:", error);
+//   });
+
+

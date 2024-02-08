@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const { Router, PostRouter } = require("./routes");
+
 
 require("dotenv").config();
 
@@ -24,6 +26,9 @@ app.get("/ping", (req, res) => {
   res.send("PONG");
 });
 
+app.use("/users",Router)
+app.use("/posts",PostRouter)
+
 app.listen(8080, () => {
-  console.log("Listening on Port 8000");
+  console.log("Listening on Port 8080");
 });

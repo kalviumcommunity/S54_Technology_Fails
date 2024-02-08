@@ -146,6 +146,10 @@
 .card-author {
   align-self: flex-end;
 }
+.card-tagline{
+  font-size: 1vmax;
+  font-weight: 700;
+}
 .card-social {
   display: flex;
   justify-content: space-between;
