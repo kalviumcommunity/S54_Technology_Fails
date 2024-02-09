@@ -1,10 +1,10 @@
 import { Box, Button, SimpleGrid, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { VscCommentDiscussion } from "react-icons/vsc";
-import { IoHeart } from "react-icons/io5";
 import {BarLoader,ClimbingBoxLoader,ClockLoader,MoonLoader,PacmanLoader,PuffLoader,PulseLoader,RiseLoader} from "react-spinners";
 import Card from "./Card";
+import {Link} from "react-router-dom"
+import { FaPlus } from "react-icons/fa";
 
 export default function Listings() {
   let [posts, setPosts] = useState([]);
@@ -25,6 +25,9 @@ export default function Listings() {
   }, []);
   return (
     <div id="listings-parent">
+        <div className="newPostBtn">
+          <Link to="/listings/new"><Button colorScheme="red"><FaPlus /></Button></Link>
+        </div>
       {posts.length == 0 ? (
         <div className="loading">
           {loadersArray[randomLoader]}
