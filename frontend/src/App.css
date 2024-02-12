@@ -135,32 +135,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* gap: 02vmin; */
-  /* cursor: pointer; */
+
   transition: all 0.2s;
 }
 .card-img > img:hover {
-  /* transform: scale(1.02); */
   box-shadow: 0px 0px 4px #1b345b;
 }
-.card-img{
+.card-img {
   padding-bottom: 1vmin;
   cursor: pointer;
 }
 .card-img > img {
-
   border-radius: 10px;
   width: 20vmax;
   height: 15vmax;
   transition: all 0.2s;
-  /* padding-bottom: 1vmin; */
-
-  /* height: 40vmin; */
 }
 .card-author {
   align-self: flex-end;
 }
-.card-tagline{
+.card-tagline {
   font-size: 1vmax;
   font-weight: 700;
 }
@@ -177,6 +171,37 @@
   align-items: center;
   gap: 0.6vmin;
   cursor: pointer;
+}
+.newPostBtn{
+  position: fixed;
+  bottom: 3vmin;
+  right: 3vmin;
+}
+
+.form-parent {
+  flex: 1;
+  padding: 5vmin 10vmin;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* background-color: aliceblue; */
+  /* color: rgb(198, 232, 255); */
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70vw;
+  padding: 2vmin;
+  border-radius: 10px;
+  background-color: rgb(213, 227, 239);
+  gap: 2vmin;
+}
+.err{
+  color: red;
+  font-size: 1.5vmin;
+  margin-top: 0.5vmin;
 }
 
 /* Media Queries for responsive */
