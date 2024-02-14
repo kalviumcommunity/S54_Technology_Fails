@@ -23,8 +23,8 @@ export default function NewPost() {
     formState: { errors },
   } = useForm();
   // console.log(watch())
-  const FormSubmitHandler = (data)=>{
-    axios.post("https://technology-fails.onrender.com/posts",data).then(()=>{
+  const FormSubmitHandler = (formData)=>{
+    axios.post("https://technology-fails.onrender.com/posts",formData).then(()=>{
       console.log("ADDED")
       navigate("/listings")
     }).catch((err)=>{

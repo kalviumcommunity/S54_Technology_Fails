@@ -5,6 +5,7 @@ const User = require("./models/user.js");
 const Post = require("./models/post.js");
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
+const { postValidation } = require("./utils/postValidation.js");
 const Router = express.Router();
 const PostRouter = express.Router();
 require("dotenv").config();
@@ -19,6 +20,15 @@ PostRouter.use(express.json());
 // async function main() {
 //   await mongoose.connect(process.env.mongo_link);
 // }
+
+const validatePost = (req, res, next) => {
+  let { error } = postValidation.validate(req.body);
+  if (error) {
+    throw new ExpressError(400, error);
+  } else {
+    next();
+  }
+};
 
 PostRouter.get("/", async (req, res) => {
   let resData;
@@ -59,7 +69,9 @@ Router.post(
 );
 PostRouter.post(
   "/",
+  validatePost,
   wrapAsync(async (req, res) => {
+    console.log(req.body);
     let postData = new Post(req.body);
     await postData.save();
     res.send("Added");
@@ -83,22 +95,22 @@ Router.put("/:username", async (req, res) => {
   }
 });
 
-PostRouter.put("/:id", async (req, res) => {
-  try {
+PostRouter.put(
+  "/:id",
+  validatePost,
+  wrapAsync(async (req, res) => {
     let { id } = req.params;
     let newData = req.body;
 
-    let result = await Post.findByIdAndUpdate(id,newData);
+    let result = await Post.findByIdAndUpdate(id, newData);
 
     if (result === null || result === undefined) {
-      res.status(404).send("User not found");
+      throw new ExpressError(404, "Post not found..!");
     } else {
       res.send("UPDATED");
     }
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-});
+  })
+);
 
 Router.delete(
   "/",
@@ -117,7 +129,7 @@ Router.delete(
 PostRouter.delete(
   "/:id",
   wrapAsync(async (req, res) => {
-    let {id} = req.params;
+    let { id } = req.params;
     let result = await Post.findByIdAndDelete(id);
     // console.log(result)
     if (result.deletedCount == 0) {
