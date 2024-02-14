@@ -30,7 +30,11 @@ export default function NewPost() {
       })
       .catch((err) => {
         console.log(err);
-        toast.error("Some error occurred.");
+        if (err.response.data == "Post not found..!") {
+          toast.error("Post not found!");
+        }else{
+          toast.error("Server side error!")
+        };
       });
   };
 
