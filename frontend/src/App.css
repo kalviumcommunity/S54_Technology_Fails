@@ -211,7 +211,11 @@
   /* align-items: center; */
   justify-content: space-around;
   padding: 10vmin;
-
+}
+.loading{
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .details-parent{
   display: flex;

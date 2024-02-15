@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import {BarLoader} from 'react-spinners'
 
 export default function CardDetailed() {
   const navigate = useNavigate();
@@ -11,7 +12,8 @@ export default function CardDetailed() {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    axios
+    setTimeout(() => {
+      axios
       .get(`https://technology-fails.onrender.com/posts/${id}`)
       .then((res) => {
         console.log(res.data);
@@ -25,6 +27,7 @@ export default function CardDetailed() {
           toast.error("Server side error or wrong ID..!")
         }
       });
+    }, 1000);
   }, []);
   const deletePost = () => {
     let result = confirm("Are you sure?");
@@ -51,23 +54,28 @@ export default function CardDetailed() {
 
   return (
     <div className="detailed-card">
-      <ToastContainer />
-      <div className="details-parent">
-        <div className="details-img">
-          <img src={data.image} alt="" />
+      
+      {Object.keys(data).length==0 ? (<div className="loading"><BarLoader color="white"/></div>) : (
+        <>
+          <div className="details-parent">
+          <ToastContainer />
+          <div className="details-img">
+            <img src={data.image} alt="" />
+          </div>
+          <div className="details-text">
+            <div className="details-title">{data.title}</div>
+            <div className="details-tagline">{data.tagline}</div>
+            <div className="details-description">{data.description}</div>
+          </div>
         </div>
-        <div className="details-text">
-          <div className="details-title">{data.title}</div>
-          <div className="details-tagline">{data.tagline}</div>
-          <div className="details-description">{data.description}</div>
+        <div className="details-btns">
+          <Button onClick={editPost} colorScheme={"red"}>Edit</Button>
+          <Button onClick={deletePost} colorScheme={"red"}>
+            Delete
+          </Button>
         </div>
-      </div>
-      <div className="details-btns">
-        <Button onClick={editPost} colorScheme={"red"}>Edit</Button>
-        <Button onClick={deletePost} colorScheme={"red"}>
-          Delete
-        </Button>
-      </div>
+        </>
+      )}
     </div>
   );
 }
