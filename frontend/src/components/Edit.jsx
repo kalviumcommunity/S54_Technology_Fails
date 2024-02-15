@@ -18,24 +18,50 @@ export default function NewPost() {
   const navigate = useNavigate();
   const [data, setData] = useState({});
   const { id } = useParams();
-  
-  const { register, handleSubmit, formState: { errors }, setValue } = useForm();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+  } = useForm();
 
   const FormSubmitHandler = (formData) => {
-    axios
-      .put(`https://technology-fails.onrender.com/posts/${data._id}`, formData)
-      .then(() => {
-        console.log("ADDED");
-        navigate(`/listings/details/${data._id}`);
-      })
-      .catch((err) => {
-        console.log(err);
-        if (err.response.data == "Post not found..!") {
-          toast.error("Post not found!");
-        }else{
-          toast.error("Server side error!")
-        };
-      });
+    const id = toast.loading("Updating");
+    setTimeout(() => {
+      axios
+        .put(
+          `https://technology-fails.onrender.com/posts/${data._id}`,
+          formData
+        )
+        .then(() => {
+          console.log("Updated");
+          toast.update(id, {
+            render: "Updated",
+            type: "success",
+            isLoading: false,
+          });
+          setTimeout(() => {
+            navigate(`/listings/details/${data._id}`);
+          }, 1000);
+        })
+        .catch((err) => {
+          console.log(err);
+          if (err.response.data == "Post not found..!") {
+            toast.update(id, {
+              render: "Post not found..!",
+              type: "error",
+              isLoading: false,
+            });
+          } else {
+            toast.update(id, {
+              render: "Server side error..!",
+              type: "error",
+              isLoading: false,
+            });
+          }
+        });
+    }, 1000);
   };
 
   useEffect(() => {
