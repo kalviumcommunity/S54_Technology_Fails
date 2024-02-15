@@ -5,4 +5,5 @@ module.exports.postValidation = Joi.object({
   tagline: Joi.string().required(),
   description: Joi.string(),
   user: Joi.string().required(),
+  image: Joi.string().required()
 });
