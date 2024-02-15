@@ -1,59 +1,74 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FormControl, FormLabel, Input, Text, Button } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Text,
+  Button,
+  Textarea,
+} from "@chakra-ui/react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 export default function NewPost() {
   const navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    watch,
-    reset,
-    formState: { errors },
-  } = useForm();
-  // console.log(watch())
+  const [data, setData] = useState({});
+  const { id } = useParams();
+  
+  const { register, handleSubmit, formState: { errors }, setValue } = useForm();
 
   const FormSubmitHandler = (formData) => {
-    const id = toast.loading("Adding");
-    setTimeout(() => {
-      axios
-        .post("https://technology-fails.onrender.com/posts", formData)
-        .then(() => {
-          console.log("ADDED");
-          toast.update(id, {
-            render: "Added",
-            type: "success",
-            isLoading: false,
-          });
-          setTimeout(() => {
-            navigate("/listings");
-          }, 1200);
-        })
-        .catch((err) => {
-          console.log(err);
-          toast.update(id, {
-            render: "Some error occurred",
-            type: "error",
-            isLoading: false,
-          });
-        });
-    }, 1000);
+    axios
+      .put(`https://technology-fails.onrender.com/posts/${data._id}`, formData)
+      .then(() => {
+        console.log("ADDED");
+        navigate(`/listings/details/${data._id}`);
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err.response.data == "Post not found..!") {
+          toast.error("Post not found!");
+        }else{
+          toast.error("Server side error!")
+        };
+      });
   };
+
+  useEffect(() => {
+    axios
+      .get(`https://technology-fails.onrender.com/posts/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+        setValue("user", res.data.user);
+        setValue("title", res.data.title);
+        setValue("tagline", res.data.tagline);
+        setValue("description", res.data.description);
+        setValue("image", res.data.image);
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err.response.data === "Post not found..!") {
+          toast.error("Post not found!");
+        } else {
+          toast.error("Server side error or wrong ID..!");
+        }
+      });
+  }, [id, setValue]); // Make sure to add `setValue` to dependencies array to avoid eslint warnings
 
   return (
     <div className="form-parent">
       <ToastContainer />
       <form className="form" onSubmit={handleSubmit(FormSubmitHandler)}>
         <Text as="b" fontSize="2.3vmax">
-          New Post
+          Edit Post
         </Text>
         <Text as="i" fontSize="1vmax">
-          Enter the following details!
+          Update according to your choice.
         </Text>
         <FormControl>
           <FormLabel fontSize="1.2vmax" as="i" fontWeight="550">
@@ -94,6 +109,18 @@ export default function NewPost() {
             })}
           />
           <p className="err">{errors.tagline?.message}</p>
+        </FormControl>
+        <FormControl>
+          <FormLabel fontSize="1.2vmax" as="i" fontWeight="550">
+            Description
+          </FormLabel>
+          <Textarea
+            borderColor="black"
+            {...register("description", {
+              required: "Description is required",
+            })}
+          />
+          <p className="err">{errors.description?.message}</p>
         </FormControl>
         <FormControl>
           <FormLabel fontSize="1.2vmax" as="i" fontWeight="550">
