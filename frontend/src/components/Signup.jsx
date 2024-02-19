@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -6,36 +6,36 @@ import "react-toastify/dist/ReactToastify.css";
 import { FormControl, FormLabel, Input, Text, Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { getCookie } from "../utils/cookies";
+import { setCookie } from "../utils/cookies";
+import { AppContext } from "./Context";
+import { loginCheck } from "../utils/loginCheck";
 
-export default function NewPost() {
+export default function Signup() {
   const navigate = useNavigate();
+  const {login,setLogin} = useContext(AppContext)
   const {
     register,
     handleSubmit,
     watch,
     reset,
-    setValue,
     formState: { errors },
   } = useForm();
   // console.log(watch())
-  const username = getCookie("username")
-  useEffect(()=>{
-    setValue("user",username)
-  })
   const FormSubmitHandler = (formData) => {
-    const id = toast.loading("Adding");
-    console.log(formData)
+    // console.log(formData);
+    const id = toast.loading("Signing Up...");
     setTimeout(() => {
       axios
-        .post("https://technology-fails.onrender.com/posts", formData)
+        .post("http://localhost:8080/users", formData)
         .then(() => {
           console.log("ADDED");
           toast.update(id, {
-            render: "Added",
+            render: "Signed Up",
             type: "success",
             isLoading: false,
           });
+          setCookie("username", formData.userName, 365);
+          setLogin(loginCheck())
           setTimeout(() => {
             navigate("/listings");
           }, 1200);
@@ -43,7 +43,7 @@ export default function NewPost() {
         .catch((err) => {
           console.log(err);
           toast.update(id, {
-            render: "Some error occurred",
+            render: "Username exists",
             type: "error",
             isLoading: false,
           });
@@ -56,7 +56,7 @@ export default function NewPost() {
       <ToastContainer />
       <form className="form" onSubmit={handleSubmit(FormSubmitHandler)}>
         <Text as="b" fontSize="2.3vmax">
-          New Post
+          Sign Up
         </Text>
         <Text as="i" fontSize="1vmax">
           Enter the following details!
@@ -66,58 +66,41 @@ export default function NewPost() {
             Username
           </FormLabel>
           <Input
-          // value={username}
-          isDisabled
             type="text"
             borderColor="black"
-            {...register("user")}
+            {...register("userName", {
+              required: "Username is required",
+            })}
           />
-          {/* <p className="err">{errors.user?.message}</p> */}
+          <p className="err">{errors.userName?.message}</p>
         </FormControl>
         <FormControl>
           <FormLabel fontSize="1.2vmax" as="i" fontWeight="550">
-            Title
+            Password
           </FormLabel>
           <Input
-            type="text"
+            type="password"
             borderColor="black"
-            {...register("title", {
-              required: "Title is required",
-              maxLength: { value: 40, message: "Max 40 Chars" },
+            {...register("password", {
+              required: "Password Required",
+              minLength: {
+                value: 8,
+                message: "Minimum 8 characters required",
+              },
+              pattern: {
+                value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/,
+                message:
+                  "Password Not Valid (Use Special Characters & Numbers)",
+              },
             })}
           />
-          <p className="err">{errors.title?.message}</p>
-        </FormControl>
-        <FormControl>
-          <FormLabel fontSize="1.2vmax" as="i" fontWeight="550">
-            Tagline
-          </FormLabel>
-          <Input
-            type="text"
-            borderColor="black"
-            {...register("tagline", {
-              required: "Tagline is required",
-            })}
-          />
-          <p className="err">{errors.tagline?.message}</p>
-        </FormControl>
-        <FormControl>
-          <FormLabel fontSize="1.2vmax" as="i" fontWeight="550">
-            Image Link
-          </FormLabel>
-          <Input
-            type="text"
-            borderColor="black"
-            {...register("image", {
-              required: "Provide a valid image url",
-            })}
-          />
-          <p className="err">{errors.image?.message}</p>
+          <p className="err">{errors.password?.message}</p>
         </FormControl>
         <Button type="submit" colorScheme="red">
           Submit
         </Button>
       </form>
+      <Link to="/login" style={{fontSize:"2vmin",color:"lightblue",textDecoration:"underline"}}>Already a user?Login here...</Link>
     </div>
   );
 }
