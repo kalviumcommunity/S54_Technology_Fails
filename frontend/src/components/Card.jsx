@@ -29,7 +29,7 @@ export default function Card({ data }) {
         </div>
         <div className="card-author">
           <Text as="i" fontSize="1vmax">
-            ~Rikhil
+            ~{data.user}
           </Text>
         </div>
         <div className="card-tagline">
@@ -40,7 +40,7 @@ export default function Card({ data }) {
             ? data.tagline.substr(0, 35) + "..."
             : data.tagline}
         </div>
-        <div className="card-social">
+        {/* <div className="card-social">
           <div className="likes">
             <IoHeart
               onClick={() => {
@@ -55,7 +55,7 @@ export default function Card({ data }) {
             <VscCommentDiscussion size="1.5vmax" />
             {data.comments}
           </div>
-        </div>
+        </div> */}
       </div>
     </Box>
   );

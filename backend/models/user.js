@@ -4,13 +4,15 @@ const userSchema = new mongoose.Schema({
   userName: {
     type: String,
     required: true,
+    unique: true,
   },
-  name: {
+  password:{
     type: String,
     required: true,
   },
   joiningDate: {
     type: Date,
+    default: new Date()
   },
   followers: {
     type: Number,

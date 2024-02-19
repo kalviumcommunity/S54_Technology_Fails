@@ -67,6 +67,23 @@ Router.post(
     res.send("Added");
   })
 );
+Router.post(
+  "/login",
+  wrapAsync(async (req, res) => {
+    let { userName, password } = req.body;
+    let result = await User.find({ userName: userName });
+    if (result.length == 0) {
+      throw new ExpressError(404, "User not found!");
+    } else {
+      let savedPassword = result[0].password;
+      if (savedPassword != password) {
+        throw new ExpressError(401, "Wrong Password");
+      } else {
+        res.send("LOGGED IN");
+      }
+    }
+  })
+);
 PostRouter.post(
   "/",
   validatePost,
