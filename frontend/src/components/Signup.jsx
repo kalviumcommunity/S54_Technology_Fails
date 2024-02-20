@@ -26,7 +26,7 @@ export default function Signup() {
     const id = toast.loading("Signing Up...");
     setTimeout(() => {
       axios
-        .post("http://localhost:8080/users", formData)
+        .post("https://technology-fails.onrender.com/users", formData)
         .then(() => {
           console.log("ADDED");
           toast.update(id, {

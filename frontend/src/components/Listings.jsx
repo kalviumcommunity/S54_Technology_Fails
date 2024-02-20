@@ -37,7 +37,7 @@ export default function Listings() {
   useEffect(() => {
     setTimeout(() => {
       axios
-        .get("http://localhost:8080/posts")
+        .get("https://technology-fails.onrender.com/posts")
         .then((data) => {
           console.log(data.data);
           setPosts(data.data);
