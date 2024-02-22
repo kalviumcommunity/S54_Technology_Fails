@@ -19,17 +19,21 @@ export default function NewPost() {
     formState: { errors },
   } = useForm();
   // console.log(watch())
-  const username = getCookie("username")
-  useEffect(()=>{
-    setValue("user",username)
-  })
-  const token = getCookie("auth-token")
+  const username = getCookie("username");
+  useEffect(() => {
+    setValue("user", username);
+  });
+  const token = getCookie("auth-token");
   const FormSubmitHandler = (formData) => {
     const id = toast.loading("Adding");
-    console.log(formData)
+    console.log(formData);
     setTimeout(() => {
       axios
-        .post("https://technology-fails.onrender.com/posts", formData,{"authorization":token})
+        .post("https://technology-fails.onrender.com/posts", formData, {
+          headers: {
+            Authorization: token,
+          },
+        })
         .then(() => {
           console.log("ADDED");
           toast.update(id, {
@@ -43,7 +47,7 @@ export default function NewPost() {
         })
         .catch((err) => {
           console.log(err);
-          if(err.response.status==403){
+          if (err.response.status == 403) {
             toast.update(id, {
               render: "Auth Error",
               type: "error",
@@ -74,8 +78,8 @@ export default function NewPost() {
             Username
           </FormLabel>
           <Input
-          // value={username}
-          isDisabled
+            // value={username}
+            isDisabled
             type="text"
             borderColor="black"
             {...register("user")}
