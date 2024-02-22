@@ -23,12 +23,13 @@ export default function NewPost() {
   useEffect(()=>{
     setValue("user",username)
   })
+  const token = getCookie("auth-token")
   const FormSubmitHandler = (formData) => {
     const id = toast.loading("Adding");
     console.log(formData)
     setTimeout(() => {
       axios
-        .post("https://technology-fails.onrender.com/posts", formData)
+        .post("https://technology-fails.onrender.com/posts", formData,{"authorization":token})
         .then(() => {
           console.log("ADDED");
           toast.update(id, {
@@ -42,6 +43,13 @@ export default function NewPost() {
         })
         .catch((err) => {
           console.log(err);
+          if(err.response.status==403){
+            toast.update(id, {
+              render: "Auth Error",
+              type: "error",
+              isLoading: false,
+            });
+          }
           toast.update(id, {
             render: "Some error occurred",
             type: "error",

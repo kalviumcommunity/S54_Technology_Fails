@@ -27,14 +27,15 @@ export default function Signup() {
     setTimeout(() => {
       axios
         .post("https://technology-fails.onrender.com/users", formData)
-        .then(() => {
-          console.log("ADDED");
+        .then((result) => {
+          // console.log(result.data);
           toast.update(id, {
             render: "Signed Up",
             type: "success",
             isLoading: false,
           });
           setCookie("username", formData.userName, 365);
+          setCookie("auth-token",result.data,365)
           setLogin(loginCheck())
           setTimeout(() => {
             navigate("/listings");

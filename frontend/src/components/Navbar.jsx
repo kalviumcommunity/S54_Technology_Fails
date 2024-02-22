@@ -8,6 +8,7 @@ export default function Navbar() {
   const {login,setLogin} = useContext(AppContext)
   const logout = () => {
     deleteCookie("username")
+    deleteCookie("auth-token")
     setLogin(loginCheck());
   };
   const loginBtn = () => {
