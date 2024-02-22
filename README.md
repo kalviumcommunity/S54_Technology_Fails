@@ -5,6 +5,7 @@ List of Stupidest Technology Fails
 
 ## Deployed Link
 Frontend : https://tech-fails.rikhiltaneja.com/
+
 Backend : https://technology-fails.onrender.com/
 
 ## Description
