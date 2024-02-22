@@ -16,7 +16,7 @@ export default function CardDetailed() {
   useEffect(() => {
     setTimeout(() => {
       axios
-        .get(`http://localhost:8080/posts/${id}`)
+        .get(`https://technology-fails.onrender.com/posts/${id}`)
         .then((res) => {
           console.log(res.data);
           setData(res.data);
