@@ -27,7 +27,7 @@ export default function Login() {
     setTimeout(() => {
       axios
         .post("https://technology-fails.onrender.com/users/login", formData)
-        .then(() => {
+        .then((result) => {
           console.log("ADDED");
           toast.update(id, {
             render: "Logged In!",
@@ -35,6 +35,7 @@ export default function Login() {
             isLoading: false,
           });
           setCookie("username", formData.userName, 365);
+          setCookie("auth-token",result.data,365)
           setLogin(loginCheck())
           setTimeout(() => {
             navigate("/listings");
