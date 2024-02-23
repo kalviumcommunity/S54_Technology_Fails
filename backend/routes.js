@@ -66,6 +66,18 @@ PostRouter.get(
   })
 );
 
+PostRouter.get(
+  "/user/:user",
+  wrapAsync(async(req,res)=>{
+    let {user} = req.params
+    let result = await Post.find({user:user})
+    if(result.length==0){
+      throw new ExpressError(404,"No posts associated with this user found")
+    }
+    res.send(result)
+  })
+)
+
 Router.get("/", async (req, res) => {
   let resData;
   await User.find().then((data) => {

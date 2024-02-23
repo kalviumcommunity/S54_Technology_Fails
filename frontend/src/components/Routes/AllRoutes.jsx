@@ -8,6 +8,8 @@ import Edit from '../Edit';
 import Signup from '../Signup';
 import PrivateAuthRoute from './PrivateAuthRoute';
 import Login from '../Login';
+import Users from '../Users';
+import UserPosts from '../UserPosts';
 
 
 export default function AllRoutes() {
@@ -20,6 +22,8 @@ export default function AllRoutes() {
         <Route path="/listings/edit/:id" element={<Edit/>} />
         <Route path="/signup" element={<Signup/>} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/users" element={<Users/>} />
+        <Route path="/posts/:user" element={<UserPosts/>} />
     </Routes>
   )
 }

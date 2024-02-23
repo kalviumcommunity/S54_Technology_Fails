@@ -130,7 +130,7 @@
   align-items: center;
   justify-content: center;
 }
-.username{
+.username {
   color: white;
   font-size: 4vmin;
 }
@@ -176,7 +176,7 @@
   gap: 0.6vmin;
   cursor: pointer;
 }
-.newPostBtn{
+.newPostBtn {
   position: fixed;
   bottom: 3vmin;
   right: 3vmin;
@@ -193,7 +193,7 @@
   /* background-color: aliceblue; */
   /* color: rgb(198, 232, 255); */
 }
-.form{
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -203,13 +203,13 @@
   background-color: rgb(213, 227, 239);
   gap: 2vmin;
 }
-.err{
+.err {
   color: red;
   font-size: 1.5vmin;
   margin-top: 0.5vmin;
 }
 
-.detailed-card{
+.detailed-card {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -217,12 +217,14 @@
   justify-content: space-around;
   padding: 10vmin;
 }
-.loading{
+.loading {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex: 1;
 }
-.details-parent{
+.details-parent {
   display: flex;
   /* flex-direction: column; */
   align-items: center;
@@ -231,14 +233,13 @@
   color: white;
 }
 
-.details-img>img{
+.details-img > img {
   border-radius: 10px;
   width: 30vw;
   height: 40vh;
 }
 
-
-.details-text{
+.details-text {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -246,20 +247,34 @@
   width: 50vw;
   text-align: center;
 }
-.details-title{
+.details-title {
   font-size: 3vmax;
   text-decoration: underline;
 }
-.details-tagline{
+.details-tagline {
   font-size: 1.5vmax;
 }
-.details-description{
+.details-description {
   font-size: 2vmin;
 }
-.details-btns{
+.details-btns {
   display: flex;
   justify-content: center;
   gap: 5vmin;
+}
+
+.users-parent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5vmin;
+  align-items: center;
+  padding: 5vmin;
+}
+.users {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10vmin;
 }
 
 /* Media Queries for responsive */
@@ -267,17 +282,17 @@
   .computer-img {
     width: 25vmax;
   }
-  .details-parent{
+  .details-parent {
     flex-direction: column;
   }
-  .details-text{
+  .details-text {
     width: 80vw;
   }
-  .details-img>img{
+  .details-img > img {
     width: 60vw;
     height: 20vh;
   }
-  .details-parent{
+  .details-parent {
     gap: 1vmin;
   }
 }

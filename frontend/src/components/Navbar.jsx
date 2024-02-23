@@ -9,6 +9,7 @@ export default function Navbar() {
   const logout = () => {
     deleteCookie("username")
     deleteCookie("auth-token")
+    location.reload();
     setLogin(loginCheck());
   };
   const loginBtn = () => {
@@ -36,7 +37,7 @@ export default function Navbar() {
           </div>
         </Link>
         <div className="options">
-          <div className="option">FAQs</div>
+          <Link to="/users"><div className="option">Users</div></Link>
           {loginBtn()}
         </div>
       </div>
