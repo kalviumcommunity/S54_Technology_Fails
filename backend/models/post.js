@@ -5,13 +5,13 @@ const postSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  tagline:{
-    type:String,
-    required:true,
+  tagline: {
+    type: String,
+    required: true,
   },
-  description:{
-    type:String,
-    default:"Coming Soon..!"
+  description: {
+    type: String,
+    required: true,
   },
   image: {
     type: String,
@@ -31,7 +31,7 @@ const postSchema = mongoose.Schema({
   },
   date: {
     type: Date,
-    default: new Date()
+    default: new Date(),
   },
 });
 

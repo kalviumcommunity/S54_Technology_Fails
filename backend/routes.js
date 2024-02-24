@@ -35,7 +35,7 @@ const jwtVerify = (req, res, next) => {
   try {
     let { authorization } = req.headers;
     let result = jwt.verify(authorization, process.env.JWT_PASS);
-    console.log(result.username);
+    // console.log(result.username);
     next();
   } catch (err) {
     throw new ExpressError(
@@ -61,7 +61,7 @@ PostRouter.get(
     if (result == null) {
       throw new ExpressError(404, "Post not found..!");
     }
-    console.log(result);
+    // console.log(result);
     res.send(result);
   })
 );
@@ -121,7 +121,7 @@ PostRouter.post(
   jwtVerify,
   validatePost,
   wrapAsync(async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     let postData = new Post(req.body);
     await postData.save();
     res.send("Added");

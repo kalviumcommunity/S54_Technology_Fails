@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FormControl, FormLabel, Input, Text, Button } from "@chakra-ui/react";
+import { FormControl, FormLabel, Input, Text, Button, Textarea } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { getCookie } from "../utils/cookies";
@@ -112,6 +112,18 @@ export default function NewPost() {
             })}
           />
           <p className="err">{errors.tagline?.message}</p>
+        </FormControl>
+        <FormControl>
+          <FormLabel fontSize="1.2vmax" as="i" fontWeight="550">
+            Description
+          </FormLabel>
+          <Textarea
+            borderColor="black"
+            {...register("description", {
+              required: "Description is required",
+            })}
+          />
+          <p className="err">{errors.description?.message}</p>
         </FormControl>
         <FormControl>
           <FormLabel fontSize="1.2vmax" as="i" fontWeight="550">
