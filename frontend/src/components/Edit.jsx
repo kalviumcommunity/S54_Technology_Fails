@@ -101,6 +101,7 @@ export default function NewPost() {
             Username
           </FormLabel>
           <Input
+          isDisabled
             type="text"
             borderColor="black"
             {...register("user", {
