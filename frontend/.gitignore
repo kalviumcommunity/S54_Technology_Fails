@@ -1,7 +1,4 @@
-# Logs
-logs
-*.log
-npm-debug.log*
+debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
