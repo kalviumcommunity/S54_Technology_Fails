@@ -18,6 +18,7 @@ Welcome to the "Stupidest Technology Fails" project, where we explore and showca
 - **Feedback:** Share your thoughts and reactions on the showcased tech fails.
 - **Suggestion Box:** Contribute your own ideas for inclusion in the project.
 
+
 ## Local Setup Instructions
 To set up and run the project locally, follow these steps:
 
